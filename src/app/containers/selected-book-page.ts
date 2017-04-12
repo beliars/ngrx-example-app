@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Renderer } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,7 +11,7 @@ import { Book } from '../models/book';
   selector: 'bc-selected-book-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <bc-book-detail
+    <bc-book-detail 
       [book]="book$ | async"
       [inCollection]="isSelectedBookInCollection$ | async"
       (add)="addToCollection($event)"
@@ -29,6 +29,7 @@ export class SelectedBookPageComponent {
   }
 
   addToCollection(book: Book) {
+    debugger;
     this.store.dispatch(new collection.AddBookAction(book));
   }
 

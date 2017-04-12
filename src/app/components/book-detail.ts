@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Renderer } from '@angular/core';
 import { Book } from '../models/book';
 
 
@@ -12,7 +12,7 @@ import { Book } from '../models/book';
         <img md-card-sm-image *ngIf="thumbnail" [src]="thumbnail"/>
       </md-card-title-group>
       <md-card-content>
-        <p [innerHtml]="description"></p>
+        <p [innerHtml]="description" #element></p>
       </md-card-content>
       <md-card-footer class="footer">
         <bc-book-authors [book]="book"></bc-book-authors>
@@ -22,7 +22,7 @@ import { Book } from '../models/book';
         Remove Book from Collection
         </button>
 
-        <button md-raised-button color="primary" *ngIf="!inCollection" (click)="add.emit(book)">
+        <button md-raised-button color="primary" *ngIf="!inCollection" (click)="test(element); add.emit(book);">
         Add Book to Collection
         </button>
       </md-card-actions>
@@ -72,6 +72,11 @@ export class BookDetailComponent {
   @Output() add = new EventEmitter<Book>();
   @Output() remove = new EventEmitter<Book>();
 
+  constructor(private renderer: Renderer) {}
+  
+  test(element: HTMLElement) {
+    this.renderer.setElementStyle(element, 'background-color', 'grey');
+  }
 
   /**
    * Tip: Utilize getters to keep templates clean

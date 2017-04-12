@@ -38,15 +38,17 @@ export class BookEffects {
   @Effect()
   search$: Observable<Action> = this.actions$
     .ofType(book.ActionTypes.SEARCH)
-    .debounceTime(300)
+    .debounceTime(500)
     .map(toPayload)
     .switchMap(query => {
       if (query === '') {
         return empty();
       }
-
+      
+      console.log('Book Effect');
+      
       const nextSearch$ = this.actions$.ofType(book.ActionTypes.SEARCH).skip(1);
-
+      
       return this.googleBooks.searchBooks(query)
         .takeUntil(nextSearch$)
         .map(books => new book.SearchCompleteAction(books))

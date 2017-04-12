@@ -26,4 +26,4 @@ export function reducer(state = initialState, action: layout.Actions): State {
   }
 }
 
-export const getShowSidenav = (state: State) => state.showSidenav;
+export const getShowSidenavQQ = (state: State) => state.showSidenav;

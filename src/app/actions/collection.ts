@@ -1,18 +1,30 @@
 import { Action } from '@ngrx/store';
 import { Book } from '../models/book';
-import { type } from '../util';
+//import { type } from '../util';
 
+
+//export const ActionTypes = {
+//  ADD_BOOK:             type('[Collection] Add Book'),
+//  ADD_BOOK_SUCCESS:     type('[Collection] Add Book Success'),
+//  ADD_BOOK_FAIL:        type('[Collection] Add Book Fail'),
+//  REMOVE_BOOK:          type('[Collection] Remove Book'),
+//  REMOVE_BOOK_SUCCESS:  type('[Collection] Remove Book Success'),
+//  REMOVE_BOOK_FAIL:     type('[Collection] Remove Book Fail'),
+//  LOAD:                 type('[Collection] Load'),
+//  LOAD_SUCCESS:         type('[Collection] Load Success'),
+//  LOAD_FAIL:            type('[Collection] Load Fail'),
+//};
 
 export const ActionTypes = {
-  ADD_BOOK:             type('[Collection] Add Book'),
-  ADD_BOOK_SUCCESS:     type('[Collection] Add Book Success'),
-  ADD_BOOK_FAIL:        type('[Collection] Add Book Fail'),
-  REMOVE_BOOK:          type('[Collection] Remove Book'),
-  REMOVE_BOOK_SUCCESS:  type('[Collection] Remove Book Success'),
-  REMOVE_BOOK_FAIL:     type('[Collection] Remove Book Fail'),
-  LOAD:                 type('[Collection] Load'),
-  LOAD_SUCCESS:         type('[Collection] Load Success'),
-  LOAD_FAIL:            type('[Collection] Load Fail'),
+  ADD_BOOK:             '[Collection] Add Book',
+  ADD_BOOK_SUCCESS:     '[Collection] Add Book Success',
+  ADD_BOOK_FAIL:        '[Collection] Add Book Fail',
+  REMOVE_BOOK:          '[Collection] Remove Book',
+  REMOVE_BOOK_SUCCESS:  '[Collection] Remove Book Success',
+  REMOVE_BOOK_FAIL:     '[Collection] Remove Book Fail',
+  LOAD:                 '[Collection] Load',
+  LOAD_SUCCESS:         '[Collection] Load Success',
+  LOAD_FAIL:            '[Collection] Load Fail',
 };
 
 
@@ -80,14 +92,14 @@ export class LoadFailAction implements Action {
   constructor(public payload: any) { }
 }
 
-
-export type Actions
-  = AddBookAction
-  | AddBookSuccessAction
-  | AddBookFailAction
-  | RemoveBookAction
-  | RemoveBookSuccessAction
-  | RemoveBookFailAction
-  | LoadAction
-  | LoadSuccessAction
-  | LoadFailAction;
+//
+//export type Actions
+//  = AddBookAction
+//  | AddBookSuccessAction
+//  | AddBookFailAction
+//  | RemoveBookAction
+//  | RemoveBookSuccessAction
+//  | RemoveBookFailAction
+//  | LoadAction
+//  | LoadSuccessAction
+//  | LoadFailAction;

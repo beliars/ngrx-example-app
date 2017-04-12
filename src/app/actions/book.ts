@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Book } from '../models/book';
-import { type } from '../util';
+//import { type } from '../util';
 
 /**
  * For each action type in an action group, make a simple
@@ -10,12 +10,19 @@ import { type } from '../util';
  * literal types and runs a simple check to guarantee all
  * action types in the application are unique.
  */
+//export const ActionTypes = {
+//  SEARCH:           type('[Book] Search'),
+//  SEARCH_COMPLETE:  type('[Book] Search Complete'),
+//  LOAD:             type('[Book] Load'),
+//  SELECT:           type('[Book] Select'),
+//};
+
 export const ActionTypes = {
-  SEARCH:           type('[Book] Search'),
-  SEARCH_COMPLETE:  type('[Book] Search Complete'),
-  LOAD:             type('[Book] Load'),
-  SELECT:           type('[Book] Select'),
-};
+    SEARCH:           '[Book] Search',
+    SEARCH_COMPLETE:  '[Book] Search Complete',
+    LOAD:             '[Book] Load',
+    SELECT:           '[Book] Select',
+  };
 
 
 /**
@@ -53,8 +60,8 @@ export class SelectAction implements Action {
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type Actions
-  = SearchAction
-  | SearchCompleteAction
-  | LoadAction
-  | SelectAction;
+//export type Actions
+//  = SearchAction
+//  | SearchCompleteAction
+//  | LoadAction
+//  | SelectAction;

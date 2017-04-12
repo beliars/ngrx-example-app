@@ -10,6 +10,8 @@ import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialModule } from '@angular/material';
 
+import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+
 import { ComponentsModule } from './components';
 import { BookEffects } from './effects/book';
 import { CollectionEffects } from './effects/collection';
@@ -29,6 +31,11 @@ import { reducer } from './reducers';
 import { schema } from './db';
 
 
+export function instrumentOptions() {
+  return {
+    monitor: useLogMonitor({ visible: true, position: 'right' })
+  };
+}
 
 @NgModule({
   imports: [
@@ -63,7 +70,8 @@ import { schema } from './db';
      *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    StoreDevtoolsModule.instrumentStore(instrumentOptions),
+    StoreLogMonitorModule,
 
     /**
      * EffectsModule.run() sets up the effects class to be initialized

@@ -40,23 +40,27 @@ export class CollectionEffects {
    */
   @Effect()
   loadCollection$: Observable<Action> = this.actions$
-    .ofType(collection.ActionTypes.LOAD)
-    .startWith(new collection.LoadAction())
-    .switchMap(() =>
-      this.db.query('books')
-        .toArray()
-        .map((books: Book[]) => new collection.LoadSuccessAction(books))
-        .catch(error => of(new collection.LoadFailAction(error)))
-    );
+  .ofType(collection.ActionTypes.LOAD)
+  .startWith(new collection.LoadAction())
+  .switchMap(() => {
+     return this.db.query('books')
+      .toArray()
+      .map((books: Book[]) => {
+        return new collection.LoadSuccessAction(books)
+      })
+      .catch(error => of(new collection.LoadFailAction(error)))
+    }
+  );
 
   @Effect()
   addBookToCollection$: Observable<Action> = this.actions$
     .ofType(collection.ActionTypes.ADD_BOOK)
     .map((action: collection.AddBookAction) => action.payload)
-    .mergeMap(book =>
-      this.db.insert('books', [ book ])
+    .mergeMap(book => {
+       return this.db.insert('books', [book])
         .map(() => new collection.AddBookSuccessAction(book))
         .catch(() => of(new collection.AddBookFailAction(book)))
+      }
     );
 
 

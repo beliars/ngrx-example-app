@@ -11,6 +11,7 @@ import * as layout from '../actions/layout';
   selector: 'bc-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
+    <ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
     <bc-layout>
       <bc-sidenav [open]="showSidenav$ | async">
         <bc-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
@@ -37,6 +38,8 @@ export class AppComponent {
      * tree to the provided selector
      */
     this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
+  
+    //this.showSidenav$ = this.store.select((state) => state.layout).distinctUntilChanged().map(layout => layout.showSidenav).distinctUntilChanged().do(show => {debugger});
   }
 
   closeSidenav() {
